@@ -1,0 +1,6 @@
+@senasoft_HostAddress = http://localhost:5026
+
+GET {{senasoft_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
