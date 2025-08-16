@@ -25,7 +25,9 @@ public class ListaOpcionesController : ControllerBase
     public async Task<IActionResult> GetById(string categoria)
     {
         
-        var datos = await _uow.GePListaopcion.ObtenerPorCondicion(opc => opc.Habilita == true && opc.Variable == categoria);
+        var datos = await _uow.GePListaopcion.ObtenerPorCondicion(
+            opc => opc.Habilita == true && opc.Variable.ToLower() == categoria.ToLower()
+            );
         if (!datos.Any())
         {
             return BadRequest("No se encontraron registros con esta categoria");
@@ -54,41 +56,39 @@ public class ListaOpcionesController : ControllerBase
     }
 
     [HttpPut("editar/{id}")]
-    public async Task<IActionResult> Editar(int id, [FromBody] GenPEpDTO actualizada)
+    public async Task<IActionResult> Editar(int id, [FromBody] GePListaopcionDTO actualizada)
     {
-        if (id == null)
+        if (actualizada == null)
         {
             return BadRequest("El cuerpo no puede ser nulo");
         }
-        var epsEncontrada = await _uow.GenPEp.ObtenerPorID(id);
+        var epsEncontrada = await _uow.GePListaopcion.ObtenerPorID(id);
         if (epsEncontrada == null || epsEncontrada.Habilita == false)
         {
             return BadRequest("No se encontró este id");
         }
-        epsEncontrada.Codigo = actualizada.Codigo;
-        epsEncontrada.Razonsocial = actualizada.Razonsocial;
-        epsEncontrada.Nit = actualizada.Nit;
-        _uow.GenPEp.Actualizar(epsEncontrada);
+        epsEncontrada.Variable = actualizada.Variable;
+        epsEncontrada.Descripcion = actualizada.Descripcion;
+        epsEncontrada.Valor = actualizada.Valor;
+        epsEncontrada.Nombre = actualizada.Nombre;
+        epsEncontrada.Abreviacion = actualizada.Abreviacion;
+        _uow.GePListaopcion.Actualizar(epsEncontrada);
         await _uow.SaveChangesAsync();
 
-        return Ok("Se ha eliminado correctamente");
+        return Ok(epsEncontrada);
 
     }
 
     [HttpPut("eliminar/{id}")]
     public async Task<IActionResult> Eliminar(int id)
     {
-        if (id == null)
-        {
-            return BadRequest("El cuerpo no puede ser nulo");
-        }
-        var epsEncontrada = await _uow.GenPEp.ObtenerPorID(id);
-        if (epsEncontrada == null || epsEncontrada.Habilita == false)
+        var opcionEncontrada = await _uow.GePListaopcion.ObtenerPorID(id);
+        if (opcionEncontrada == null || opcionEncontrada.Habilita == false)
         {
             return BadRequest("No se encontró este id");
         }
-        epsEncontrada.Habilita = false;
-        _uow.GenPEp.Actualizar(epsEncontrada);
+        opcionEncontrada.Habilita = false;
+        _uow.GePListaopcion.Actualizar(opcionEncontrada);
         await _uow.SaveChangesAsync();
 
         return Ok("Se ha eliminado correctamente");

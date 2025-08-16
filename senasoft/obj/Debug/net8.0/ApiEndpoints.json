@@ -27,6 +27,22 @@
   },
   {
     "ContainingType": "EpsController",
+    "Method": "Crear",
+    "RelativePath": "api/Eps/crear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nuevo",
+        "Type": "senasoft.Models.DTO.GenPEpDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EpsController",
     "Method": "Editar",
     "RelativePath": "api/Eps/editar/{id}",
     "HttpMethod": "PUT",
@@ -51,6 +67,164 @@
     "Method": "Eliminar",
     "RelativePath": "api/Eps/eliminar/{id}",
     "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ListaOpcionesController",
+    "Method": "GetAll",
+    "RelativePath": "api/ListaOpciones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ListaOpcionesController",
+    "Method": "GetById",
+    "RelativePath": "api/ListaOpciones/{categoria}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoria",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ListaOpcionesController",
+    "Method": "crear",
+    "RelativePath": "api/ListaOpciones/crear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nuevo",
+        "Type": "senasoft.Models.DTO.GePListaopcionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ListaOpcionesController",
+    "Method": "Editar",
+    "RelativePath": "api/ListaOpciones/editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizada",
+        "Type": "senasoft.Models.DTO.GePListaopcionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ListaOpcionesController",
+    "Method": "Eliminar",
+    "RelativePath": "api/ListaOpciones/eliminar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NivelEPSController",
+    "Method": "GetAll",
+    "RelativePath": "api/NivelEPS",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NivelEPSController",
+    "Method": "GetById",
+    "RelativePath": "api/NivelEPS/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NivelEPSController",
+    "Method": "crear",
+    "RelativePath": "api/NivelEPS/crear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nuevo",
+        "Type": "senasoft.Models.DTO.FacPNivelDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NivelEPSController",
+    "Method": "Editar",
+    "RelativePath": "api/NivelEPS/editar/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "actualizada",
+        "Type": "senasoft.Models.DTO.FacPNivelDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NivelEPSController",
+    "Method": "Eliminar",
+    "RelativePath": "api/NivelEPS/eliminar/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [

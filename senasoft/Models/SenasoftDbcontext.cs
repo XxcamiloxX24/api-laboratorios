@@ -24,7 +24,7 @@ public partial class SenasoftDbcontext : DbContext
 
     public virtual DbSet<FacPProfesional> FacPProfesionals { get; set; }
 
-    public virtual DbSet<GePListaopcion> GePListaopcions { get; set; }
+    public virtual DbSet<GePListaopcion> GePListaopcion { get; set; }
 
     public virtual DbSet<GenMPersona> GenMPersonas { get; set; }
 
