@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("senasoft")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea13436fe0414eaa563a0c07c28364d5104c6c1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+715b8990af7bf15f30e08a935c8cdbe8ad2c4a2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("senasoft")]
 [assembly: System.Reflection.AssemblyTitleAttribute("senasoft")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

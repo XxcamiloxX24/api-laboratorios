@@ -20,15 +20,15 @@ public class EpsController : ControllerBase
         return Ok(datos);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("{codigo}")]
+    public async Task<IActionResult> GetById(string codigo)
     {
         
-        var datos = await _uow.GenPEp.ObtenerPorID(id);
+        var datos = await _uow.GenPEp.ObtenerPorCodigo(codigo);
 
         if (datos.Habilita == false || datos == null)
         {
-            return BadRequest("No se encontro este id o fue eliminado");
+            return BadRequest("No se encontro este codigo o fue eliminado");
         }
         return Ok(datos);
     }

@@ -16,5 +16,7 @@ namespace senasoft.Repositorios.Implementacion
         {
             return await _context.GenPEps.Where(condicion).ToListAsync();
         }
+
+        public async Task<GenPEp?> ObtenerPorCodigo(string codigo) => await _context.GenPEps.FirstOrDefaultAsync(e => e.Codigo == codigo);
     }
 }
