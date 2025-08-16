@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using senasoft.Data;
-using senasoft.Models;
 using senasoft.Models.DTO;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EpsController : ControllerBase
+public class ListaOpcionesController : ControllerBase
 {
     private readonly IUnidadDeTrabajo _uow;
 
-    public EpsController(IUnidadDeTrabajo uow)
+    public ListaOpcionesController(IUnidadDeTrabajo uow)
     {
         _uow = uow;
     }
@@ -17,45 +16,26 @@ public class EpsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var datos = await _uow.GenPEp.ObtenerPorCondicion(eps => eps.Habilita == true);
+        var datos = await _uow.GePListaopcion.ObtenerPorCondicion(opc => opc.Habilita == true);
         return Ok(datos);
     }
 
-    [HttpGet("{codigo}")]
-    public async Task<IActionResult> GetById(string codigo)
+    [HttpGet("{categoria}")]
+    public async Task<IActionResult> GetById(string categoria)
     {
         
-        var datos = await _uow.GenPEp.ObtenerPorCodigo(codigo);
-
-        if (datos.Habilita == false || datos == null)
+        var datos = await _uow.GePListaopcion.ObtenerPorCondicion(opc => opc.Habilita == true && opc.Variable == categoria);
+        if (!datos.Any())
         {
-            return BadRequest("No se encontro este codigo o fue eliminado");
+            return BadRequest("No se encontraron registros con esta categoria");
         }
         return Ok(datos);
-    }
-
-    [HttpPost("crear")]
-    public async Task<IActionResult> Crear([FromBody] GenPEpDTO nuevo)
-    {
-        if (nuevo == null)
-        {
-            return BadRequest("El cuerpo no puede ser nulo");
-        }
-        var nuevoRegistro = new GenPEp
-        {
-            Codigo = nuevo.Codigo,
-            Razonsocial = nuevo.Razonsocial,
-            Nit = nuevo.Nit
-        };
-        await _uow.GenPEp.Agregar(nuevoRegistro);
-        await _uow.SaveChangesAsync();
-        return Ok(nuevoRegistro);
     }
 
     [HttpPut("editar/{id}")]
     public async Task<IActionResult> Editar(int id, [FromBody] GenPEpDTO actualizada)
     {
-        if (actualizada == null)
+        if (id == null)
         {
             return BadRequest("El cuerpo no puede ser nulo");
         }
