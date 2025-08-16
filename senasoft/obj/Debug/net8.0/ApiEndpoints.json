@@ -11,6 +11,22 @@
   },
   {
     "ContainingType": "EpsController",
+    "Method": "GetById",
+    "RelativePath": "api/Eps/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EpsController",
     "Method": "Eliminar",
     "RelativePath": "api/Eps/eliminar/{id}",
     "HttpMethod": "PUT",

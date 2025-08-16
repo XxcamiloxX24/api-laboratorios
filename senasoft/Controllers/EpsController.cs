@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using senasoft.Data;
+using senasoft.Models.DTO;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -32,6 +33,27 @@ public class EpsController : ControllerBase
         return Ok(datos);
     }
 
+    [HttpPut("editar/{id}")]
+    public async Task<IActionResult> Editar(int id, [FromBody] GenPEpDTO actualizada)
+    {
+        if (id == null)
+        {
+            return BadRequest("El cuerpo no puede ser nulo");
+        }
+        var epsEncontrada = await _uow.GenPEp.ObtenerPorID(id);
+        if (epsEncontrada == null || epsEncontrada.Habilita == false)
+        {
+            return BadRequest("No se encontró este id");
+        }
+        epsEncontrada.Codigo = actualizada.Codigo;
+        epsEncontrada.Razonsocial = actualizada.Razonsocial;
+        epsEncontrada.Nit = actualizada.Nit;
+        _uow.GenPEp.Actualizar(epsEncontrada);
+        await _uow.SaveChangesAsync();
+
+        return Ok("Se ha eliminado correctamente");
+
+    }
 
     [HttpPut("eliminar/{id}")]
     public async Task<IActionResult> Eliminar(int id)
